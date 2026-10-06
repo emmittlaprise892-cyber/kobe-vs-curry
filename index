@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kobe vs Curry</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    #score {
+      font-size: 28px;
+      margin: 15px;
+    }
+
+    #court {
+      width: 90%;
+      max-width: 900px;
+      height: 500px;
+      margin: auto;
+      background: #d99a55;
+      border: 8px solid white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #kobe {
+      background: purple;
+      left: 100px;
+      top: 210px;
+    }
+
+    #curry {
+      background: blue;
+      right: 100px;
+      top: 210px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 20px;
+      margin: 8px;
+      cursor: pointer;
+    }
+
+    #message {
+      font-size: 22px;
+      margin: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🏀 KOBE vs CURRY 🏀</h1>
+
+  <div id="score">
+    Kobe: <span id="kobeScore">0</span>
+    -
+    Curry: <span id="curryScore">0</span>
+  </div>
+
+  <div id="court">
+    <div id="kobe" class="player">KOBE</div>
+    <div id="curry" class="player">CURRY</div>
+  </div>
+
+  <div>
+    <button onclick="kobeShoot()">Kobe Shoot 🏀</button>
+    <button onclick="curryShoot()">Curry Shoot 🏀</button>
+    <button onclick="resetGame()">Reset Game</button>
+  </div>
+
+  <div id="message">Choose a player and shoot!</div>
+
+  <script>
+    let kobeScore = 0;
+    let curryScore = 0;
+
+    function kobeShoot() {
+      let made = Math.random() < 0.55;
+
+      if (made) {
+        kobeScore += 2;
+        document.getElementById("message").textContent =
+          "🔥 Kobe hits the shot!";
+      } else {
+        document.getElementById("message").textContent =
+          "Kobe misses!";
+      }
+
+      updateScore();
+    }
+
+    function curryShoot() {
+      let made = Math.random() < 0.60;
+
+      if (made) {
+        curryScore += 3;
+        document.getElementById("message").textContent =
+          "💦 Curry hits a THREE!";
+      } else {
+        document.getElementById("message").textContent =
+          "Curry misses!";
+      }
+
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById("kobeScore").textContent = kobeScore;
+      document.getElementById("curryScore").textContent = curryScore;
+    }
+
+    function resetGame() {
+      kobeScore = 0;
+      curryScore = 0;
+      updateScore();
+
+      document.getElementById("message").textContent =
+        "Choose a player and shoot!";
+    }
+  </script>
+
+</body>
+</html>
